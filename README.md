@@ -24,7 +24,7 @@ SQL-like Query Parser
 Установка
 
 1. Клонировать репозиторий:
-git clone https://github.com/yourusername/sql-parser.git
+git clone ...
 cd sql-parser
 
 2. Установить зависимости:     pip install -e .
