@@ -1,0 +1,14 @@
+query       = select_clause ws from_clause ws where_clause? ws group_clause? ws limit_clause? ws?
+select_clause = "SELECT" ws column_list
+from_clause = "FROM" ws ~r"[a-zA-Z_]+"
+where_clause = "WHERE" ws condition_list
+group_clause = "GROUP BY" ws column_list
+limit_clause = "LIMIT" ws ~r"\d+"
+
+column_list = column (ws "," ws column)*
+column      = ~r"[a-zA-Z_*]+" (ws "AS" ws ~r"[a-zA-Z_]+")?
+condition_list = condition (ws "AND" ws condition)*
+condition   = (column / literal) ws ~r"[=><!]+" ws (column / literal)
+literal     = ~r"\d+" / ~r"'[^']*'"
+
+ws          = ~r"\s*"
